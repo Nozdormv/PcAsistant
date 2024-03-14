@@ -1,6 +1,7 @@
 import os
 import webbrowser
 import wikipedia
+import random
 
 # ANSI color codes for text styling
 class color:
@@ -9,6 +10,23 @@ class color:
     END = '\033[0m'
     BLUE = '\033[94m'
     GREEN = '\033[92m'
+
+# Predefined jokes and quotes
+jokes = [
+    ("Why don't scientists trust atoms?", "Because they make up everything!"),
+    ("Did you hear about the mathematician who's afraid of negative numbers?", "He'll stop at nothing to avoid them!"),
+    ("Why did the scarecrow win an award?", "Because he was outstanding in his field!"),
+    ("What do you call fake spaghetti?", "An impasta!"),
+    ("Why did the bicycle fall over?", "Because it was two-tired!")
+]
+
+quotes = [
+    ("The greatest glory in living lies not in never falling, but in rising every time we fall.", "Nelson Mandela"),
+    ("The way to get started is to quit talking and begin doing.", "Walt Disney"),
+    ("Life is what happens when you're busy making other plans.", "John Lennon"),
+    ("The future belongs to those who believe in the beauty of their dreams.", "Eleanor Roosevelt"),
+    ("Spread love everywhere you go. Let no one ever come to you without leaving happier.", "Mother Teresa")
+]
 
 def greet():
     # Clear screen and set window title
@@ -32,7 +50,8 @@ def greet():
     print("1. Open applications: Type 'open <application_name>'.")
     print("2. Search the web: Type 'search <query>'.")
     print("3. Get summary from Wikipedia: Type 'summary <topic>'.")
-    print("4. Run start: Opens Discord and Chrome with Twitch URL.")
+    print("4. Get a joke: Type 'joke'.")
+    print("5. Get a quote: Type 'quote'.")
     print(" ")
     print("Type 'quit' to exit.")
     print(" ")
@@ -62,16 +81,20 @@ def get_wikipedia_summary(topic):
     except Exception as e:
         print(f"Error: {e}")
 
-def run_start():
-    open_application("Discord")
-    webbrowser.get("chrome").open("https://www.twitch.tv/")
+# Function to get a random joke
+def get_joke():
+    return random.choice(jokes)
+
+# Function to get a random quote
+def get_quote():
+    return random.choice(quotes)
 
 def main():
     greet()
     while True:
-        user_input = input("How can I assist you?\n")
+        user_input = input("\nHow can I assist you?\n\n")
         if user_input.lower() == 'quit':
-            print("Goodbye!")
+            print("\nGoodbye!")
             break
         elif 'open' in user_input:
             app = user_input.split('open ')[1]
@@ -84,9 +107,15 @@ def main():
         elif 'summary' in user_input:
             topic = user_input.split('summary ')[1]
             get_wikipedia_summary(topic)
-        elif user_input.lower() == 'run start':
-            run_start()
-            print("Discord and Chrome with Twitch URL are being opened...")
+        elif user_input.lower() == 'joke':
+            setup, punchline = get_joke()
+            print("\nHere's a joke for you:\n")
+            print(setup)
+            print(punchline)
+        elif user_input.lower() == 'quote':
+            quote, author = get_quote()
+            print("\nHere's a quote for you:\n")
+            print(f'"{quote}" - {author}')
         else:
             print("I'm sorry, I didn't understand that. Can you please repeat?")
 
