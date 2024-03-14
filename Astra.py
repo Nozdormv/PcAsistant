@@ -2,6 +2,8 @@ import os
 import webbrowser
 import wikipedia
 import random
+import platform
+import psutil
 
 # ANSI color codes for text styling
 class color:
@@ -52,6 +54,7 @@ def greet():
     print("3. Get summary from Wikipedia: Type 'summary <topic>'.")
     print("4. Get a joke: Type 'joke'.")
     print("5. Get a quote: Type 'quote'.")
+    print("6. Get system information: Type 'sysinfo'.")
     print(" ")
     print("Type 'quit' to exit.")
     print(" ")
@@ -89,12 +92,24 @@ def get_joke():
 def get_quote():
     return random.choice(quotes)
 
+# Function to get system information
+def get_system_info():
+    print("System Information:")
+    print(f"Operating System: {platform.system()} {platform.release()}")
+    print(f"Processor: {platform.processor()}")
+    print(f"Total Memory: {psutil.virtual_memory().total / (1024 ** 3):.2f} GB")
+    print(f"Available Memory: {psutil.virtual_memory().available / (1024 ** 3):.2f} GB")
+    print(f"Total CPU Cores: {psutil.cpu_count(logical=False)}")
+    print(f"Total CPU Threads: {psutil.cpu_count(logical=True)}")
+    print(f"CPU Usage: {psutil.cpu_percent()}%")
+    print()
+
 def main():
     greet()
     while True:
-        user_input = input("\nHow can I assist you?\n\n")
+        user_input = input("How can I assist you?\n\n")
         if user_input.lower() == 'quit':
-            print("\nGoodbye!")
+            print("Goodbye!")
             break
         elif 'open' in user_input:
             app = user_input.split('open ')[1]
@@ -109,13 +124,15 @@ def main():
             get_wikipedia_summary(topic)
         elif user_input.lower() == 'joke':
             setup, punchline = get_joke()
-            print("\nHere's a joke for you:\n")
+            print("Here's a joke for you:")
             print(setup)
             print(punchline)
         elif user_input.lower() == 'quote':
             quote, author = get_quote()
-            print("\nHere's a quote for you:\n")
+            print("Here's a quote for you:")
             print(f'"{quote}" - {author}')
+        elif user_input.lower() == 'sysinfo':
+            get_system_info()
         else:
             print("I'm sorry, I didn't understand that. Can you please repeat?")
 
