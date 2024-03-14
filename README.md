@@ -12,17 +12,19 @@ Astra is a simple Python-based personal assistant script that acts as your digit
 
 ## Installation
 
-To run Astra, you need to have Python installed on your computer. You can download Python from the official website: [python.org](https://www.python.org/).
 
-You can also install the required dependencies by running:
-
-## Usage
-
-1. Clone the repository to your local machine.
-2. Navigate to the directory containing the script.
-3. Run the script using the following command:
+Download the standalone executable, double-click the executable file to run Astra.
 
 Follow the on-screen instructions to interact with Astra and perform various tasks.
+
+## Contributing
+
+Contributions are welcome! If you have any ideas for new features or improvements, feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the [MIT License](LICENSE).
+
 
 ## Contributing
 
