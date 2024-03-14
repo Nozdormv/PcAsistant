@@ -12,10 +12,10 @@ Astra is a simple Python-based personal assistant script that acts as your digit
 
 ## Installation
 
-Download the standalone executable, double-click the executable file to run Astra.
+Download the standalone [executable](https://github.com/Nozdormv/PcAsistant/releases), double-click the executable file to run Astra.
 
 Follow the on-screen instructions to interact with Astra and perform various tasks.
 
 ## License
 
-This project is licensed under the [MIT License](LICENSE).
+This project is licensed under the [MIT License](https://github.com/Nozdormv/PcAsistant/blob/v0.1.6/LICENSE).
