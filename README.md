@@ -17,19 +17,6 @@ Download the standalone executable, double-click the executable file to run Astr
 
 Follow the on-screen instructions to interact with Astra and perform various tasks.
 
-## Contributing
-
-Contributions are welcome! If you have any ideas for new features or improvements, feel free to open an issue or submit a pull request.
-
-## License
-
-This project is licensed under the [MIT License](LICENSE).
-
-
-## Contributing
-
-Contributions are welcome! If you have any ideas for new features or improvements, feel free to open an issue or submit a pull request.
-
 ## License
 
 This project is licensed under the [MIT License](LICENSE).
