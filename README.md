@@ -12,7 +12,6 @@ Astra is a simple Python-based personal assistant script that acts as your digit
 
 ## Installation
 
-
 Download the standalone executable, double-click the executable file to run Astra.
 
 Follow the on-screen instructions to interact with Astra and perform various tasks.
