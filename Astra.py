@@ -52,9 +52,10 @@ def greet():
     print("1. Open applications: Type 'open <application_name>'.")
     print("2. Search the web: Type 'search <query>'.")
     print("3. Get summary from Wikipedia: Type 'summary <topic>'.")
-    print("4. Get a joke: Type 'joke'.")
-    print("5. Get a quote: Type 'quote'.")
-    print("6. Get system information: Type 'sysinfo'.")
+    print("4. Run start: Opens Discord and Chrome with Twitch URL.")
+    print("5. Get a joke: Type 'joke'.")
+    print("6. Get a quote: Type 'quote'.")
+    print("7. Get system information: Type 'sysinfo'.")
     print(" ")
     print("Type 'quit' to exit.")
     print(" ")
@@ -66,6 +67,7 @@ def open_application(application_name):
     except Exception as e:
         print(f"Error: {e}")
 
+# Function to search in web
 def search_web(query):
     try:
         webbrowser.open_new_tab(f"https://www.google.com/search?q={query}")
@@ -73,6 +75,7 @@ def search_web(query):
     except Exception as e:
         print(f"Error: {e}")
 
+# Function wikipedia summary
 def get_wikipedia_summary(topic):
     try:
         summary = wikipedia.summary(topic, sentences=2)
@@ -83,6 +86,11 @@ def get_wikipedia_summary(topic):
         print("Page not found. Please provide a valid query.")
     except Exception as e:
         print(f"Error: {e}")
+
+# Function start open apps
+def run_start():
+    open_application("Discord")
+    webbrowser.get("chrome").open("https://www.twitch.tv/")
 
 # Function to get a random joke
 def get_joke():
