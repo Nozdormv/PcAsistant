@@ -34,14 +34,15 @@ def greet():
     # Clear screen and set window title
     os.system('cls' if os.name == 'nt' else 'clear')
     print("\033]0;Astra - Personal Assistant\007", end='')  # Set window title
+    print("Welcome to Astra v1.1.8")
     print(color.BOLD + color.GREEN + "          ___           ")
     print("        //   \\\\         ")
     print("       ||" + color.BLUE + "Astra" + color.GREEN + "||        ")
     print("        \\\\___//         ")
     print("     ___________        ")
-    print("    /   Welcome \       ")
-    print("   /    to your  \      ")
-    print("  /  Personal    /\\     ")
+    print("    /  Welcome  \       ")
+    print("   /   to your   \      ")
+    print("  /   Personal   /\\     ")
     print(" /   Assistant  /  \\    ")
     print("/______________/____\\   ")
     print(" ")
