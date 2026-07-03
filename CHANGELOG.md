@@ -21,10 +21,12 @@
 - Versión actualizada de `v2.0` a `v2.11.30 (Beta)`
 - Indicador de versión visible en el pie del sidebar y en panel Acerca de
 - `test.bat` ahora lanza la app sin ventana de consola mediante `launch.vbs`
+- **Dependencias**: Electron actualizado de `^34.0.0` a `^43.0.0`, electron-builder de `^25.0.0` a `^26.15.3`
 
 ### Fixed
 - 10 bugs corregidos en el código Python original (formato seguro con llaves, shell injection, etc.)
 - Ventana de consola ya no se muestra al iniciar la app
+- Vulnerabilidades de seguridad en `electron` y `tar` (10 advisories, Dependabot)
 
 ### Removed
 - Dependencia de Python 3.x y librerías Tkinter/PyInstaller/Nuitka
