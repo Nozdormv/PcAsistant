@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+  <title>Astra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Login Screen -->
+  <div id="login-screen" class="screen-center">
+    <div class="glass-card login-card" style="position:relative;">
+      <button id="login-close" class="dialog-close" title="Cerrar">✕</button>
+      <div class="login-header">
+        <div class="app-icon">✦</div>
+        <h1>Astra</h1>
+        <p class="subtitle">Asistente personal inteligente</p>
+      </div>
+      <p id="login-status" class="status-msg"></p>
+      <div class="field">
+        <input type="text" id="username-input" placeholder=" " autocomplete="off">
+        <label>Usuario</label>
+      </div>
+      <div class="field">
+        <input type="password" id="password-input" placeholder=" ">
+        <label>Contraseña</label>
+      </div>
+      <button id="login-btn" class="btn-primary">Iniciar Sesión</button>
+      <button id="register-btn" class="btn-text">Crear cuenta nueva</button>
+    </div>
+  </div>
+
+  <!-- Session Dialog -->
+  <div id="session-dialog" class="screen-center hidden">
+    <div class="glass-card" style="max-width:340px;position:relative;">
+      <button id="session-close" class="dialog-close" title="Cerrar">✕</button>
+      <div class="login-header">
+        <div class="app-icon">✦</div>
+        <h2 id="session-welcome"></h2>
+      </div>
+      <p id="session-msg" class="subtitle"></p>
+      <button id="session-continue" class="btn-primary">Continuar</button>
+      <button id="session-new" class="btn-text">Nuevo inicio de sesión</button>
+    </div>
+  </div>
+
+  <!-- Register Dialog -->
+  <div id="register-dialog" class="screen-center hidden">
+    <div class="glass-card" style="max-width:340px;position:relative;">
+      <button id="register-close-x" class="dialog-close" title="Cerrar">✕</button>
+      <div class="login-header">
+        <div class="app-icon">✦</div>
+        <h2>Crear cuenta</h2>
+      </div>
+      <p id="register-status" class="status-msg"></p>
+      <div class="field">
+        <input type="text" id="reg-username" placeholder=" ">
+        <label>Usuario</label>
+      </div>
+      <div class="field">
+        <input type="password" id="reg-password" placeholder=" ">
+        <label>Contraseña</label>
+      </div>
+      <button id="register-confirm" class="btn-primary">Registrarse</button>
+      <button id="register-cancel" class="btn-text">Cancelar</button>
+    </div>
+  </div>
+
+  <!-- Main Screen -->
+  <div id="main-screen" class="hidden">
+    <!-- Title Bar -->
+    <header id="titlebar">
+      <div class="titlebar-left">
+        <span class="titlebar-icon">✦</span>
+        <span class="titlebar-text" id="toolbar-title">Astra</span>
+      </div>
+      <div class="titlebar-center"></div>
+      <div class="titlebar-right">
+        <button class="tb-btn" id="btn-minimize" title="Minimizar">─</button>
+        <button class="tb-btn" id="btn-maximize" title="Maximizar">□</button>
+        <button class="tb-btn tb-close" id="btn-close" title="Cerrar">✕</button>
+      </div>
+    </header>
+
+    <div class="app-body">
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-profile">
+          <div class="avatar">✦</div>
+          <div class="profile-info">
+            <span class="profile-name" id="sidebar-user">Usuario</span>
+            <span class="profile-status">Conectado</span>
+          </div>
+        </div>
+
+        <nav class="sidebar-nav">
+          <button class="nav-item active" data-view="chat">
+            <span class="nav-icon">💬</span>
+            <span class="nav-label">Chat</span>
+          </button>
+          <button class="nav-item" data-view="system">
+            <span class="nav-icon">🖥</span>
+            <span class="nav-label">Sistema</span>
+          </button>
+          <button class="nav-item" data-view="apps">
+            <span class="nav-icon">🚀</span>
+            <span class="nav-label">Apps</span>
+          </button>
+          <button class="nav-item" data-view="settings">
+            <span class="nav-icon">⚙</span>
+            <span class="nav-label">Ajustes</span>
+          </button>
+        </nav>
+
+        <div class="sidebar-footer">
+          <div class="sidebar-version">v2.11.30 (Beta)</div>
+          <button id="btn-logout" class="nav-item">
+            <span class="nav-icon">⇤</span>
+            <span class="nav-label">Cerrar sesión</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Chat View -->
+      <main id="view-chat" class="view active">
+        <div id="chat-display"></div>
+        <div class="input-area">
+          <div class="input-wrapper">
+            <input type="text" id="chat-input" placeholder="Escribe un mensaje a Astra..." autofocus>
+            <button id="chat-send" class="send-btn" title="Enviar">➤</button>
+          </div>
+        </div>
+      </main>
+
+      <!-- System View -->
+      <main id="view-system" class="view hidden">
+        <div class="view-header">
+          <h2>Información del Sistema</h2>
+          <button class="btn-primary btn-sm" id="sys-refresh">Actualizar</button>
+        </div>
+        <div id="system-cards" class="cards-grid"></div>
+      </main>
+
+      <!-- Apps View -->
+      <main id="view-apps" class="view hidden">
+        <div class="view-header">
+          <h2>Abrir aplicación</h2>
+        </div>
+        <div class="apps-grid" id="apps-grid"></div>
+        <div class="field" style="margin-top:20px;">
+          <input type="text" id="app-custom-input" placeholder=" ">
+          <label>O escribe el nombre</label>
+        </div>
+        <button id="app-custom-btn" class="btn-primary btn-sm">Abrir</button>
+        <p id="app-status" class="status-msg"></p>
+      </main>
+
+      <!-- Settings View -->
+      <main id="view-settings" class="view hidden">
+        <div class="view-header">
+          <h2>Ajustes</h2>
+        </div>
+        <div class="settings-section">
+          <h3>Apariencia</h3>
+          <div class="setting-row">
+            <span>Tema</span>
+            <button id="btn-toggle-theme" class="btn-primary btn-sm">Cambiar a modo oscuro</button>
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Voz</h3>
+          <div class="setting-row">
+            <span>Velocidad de voz</span>
+            <input type="range" id="tts-speed" min="50" max="300" value="180">
+          </div>
+        </div>
+        <div class="settings-section">
+          <h3>Acerca de</h3>
+           <p class="about-text">Astra v2.11.30 (Beta) — Asistente Personal de Escritorio</p>
+          <p class="about-text">Sistema inteligente de respuestas por patrones</p>
+        </div>
+      </main>
+
+      <!-- Floating reminder toast -->
+      <div id="reminder-toast" class="toast hidden">
+        <div class="toast-icon">⏰</div>
+        <div class="toast-content">
+          <div class="toast-title">Recordatorio</div>
+          <div class="toast-msg" id="toast-msg"></div>
+        </div>
+        <button class="toast-close" id="toast-close">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="renderer.js"></script>
+</body>
+</html>

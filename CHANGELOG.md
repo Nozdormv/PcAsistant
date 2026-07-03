@@ -1,51 +1,37 @@
 # Changelog
 
-## v2.0.0 (2026-06-04)
+## v2.11.30 (Beta) — 03-07-2026
 
-### Novedades
-- 🌍 **Sistema bilingüe** — Interfaz y respuestas en español (es-ES) e inglés (en-UK), seleccionable desde Configuración
-- 🧠 **Clasificador de intenciones** — Sistema inteligente de patrones que entiende lenguaje natural sin APIs externas
-- 👤 **Sistema de usuarios** — Login/registro con contraseñas hasheadas con sal (SHA256)
-- 💾 **Persistencia de sesión** — Al cerrar y reabrir, pregunta si querés continuar
-- ⏰ **Recordatorios funcionales** — "recuérdame en X minutos que [tarea]" con aviso emergente
-- 🎨 **Interfaz renovada** — Tema oscuro/claro, menú de configuración
-- 🔊 **Texto a voz** — Velocidad ajustable desde Configuración
+### Added
+- Port completo de Python (Tkinter) a Node.js + Electron
+- Interfaz moderna estilo Windows 11: glass-morphism, sidebar, chat, temas claro/oscuro
+- Sistema de autenticación con login, registro y sesión persistente
+- Clasificador de intenciones (sistema, búsqueda web, Wikipedia, apps, recordatorios, chistes, citas)
+- Bandeja de sistema (system tray) con menú contextual (Mostrar / Salir)
+- Atajo global `Ctrl+Shift+A` para mostrar/ocultar la ventana
+- Toast de notificaciones para recordatorios
+- Panel de información del sistema (CPU, RAM, disco, red, uptime)
+- Grid de lanzamiento rápido de aplicaciones
+- Log de eventos en `%APPDATA%\Astra\astra.log`
+- Captura automática de errores no controlados (`uncaughtException`, `unhandledRejection`, `console.error`) al archivo de log
+- Usuario `demo` / `demo` creado automáticamente en primer inicio
 
-### Mejoras
-- 🚀 **Startup rápido** — pyttsx3 se carga solo al usar voz (lazy-load)
-- 🔒 **Apps con lista blanca** — Solo se pueden abrir aplicaciones permitidas por seguridad
-- 🧹 **Código limpio** — Eliminados imports muertos (`openai`, `pyperclip`, `threading`)
-- 🪟 **Ventanas integradas** — Mensajes de login/registro dentro de la misma ventana, sin popups separados
-- 🌙 **Tema oscuro completo** — Cambia fondo y color del chat, no solo la ventana principal
+### Changed
+- Migración de `PyInstaller`/`Nuitka` a `electron-builder` para evitar bloqueos de Windows Defender
+- Versión actualizada de `v2.0` a `v2.11.30 (Beta)`
+- Indicador de versión visible en el pie del sidebar y en panel Acerca de
+- `test.bat` ahora lanza la app sin ventana de consola mediante `launch.vbs`
 
-### Fixes
-- Corregido error de rutas en ejecutable compilado (buscaba archivos en directorio equivocado)
-- Eliminada integración con OpenAI (API deprecada y no funcional)
+### Fixed
+- 10 bugs corregidos en el código Python original (formato seguro con llaves, shell injection, etc.)
+- Ventana de consola ya no se muestra al iniciar la app
 
----
+### Removed
+- Dependencia de Python 3.x y librerías Tkinter/PyInstaller/Nuitka
 
-## v1.1.8 (2025)
+## v0.1.7 (Beta) — 26-03-2024
 
-### Novedades
-- Versión CLI con interfaz de consola y colores ANSI
-- Comandos básicos: abrir apps, buscar web, Wikipedia, chistes, citas, sysinfo
-- Script `.bat` para ejecución rápida en Windows
-
----
-
-## v0.1.7 (2025)
-
-### Novedades
-- Sistema de login/registro con persistencia de sesión
-- Integración con OpenAI (text-davinci-003) — no funcional
-- Tema oscuro/claro básico
-- Lector de pantalla (TTS)
-
----
-
-## v0.1.6 (2025)
-
-### Novedades
-- Versión inicial con interfaz Tkinter
-- Comandos básicos de sistema
--README inicial
+- Versión inicial del asistente Astra en Python con interfaz Tkinter
+- Funcionalidad básica de chat con clasificador de intenciones
+- Autenticación local con credenciales saladas
+- Información del sistema mediante `psutil`

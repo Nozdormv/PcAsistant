@@ -1,0 +1,33 @@
+{
+  "name": "astra",
+  "version": "2.11.30",
+  "description": "Astra - Asistente Personal de Escritorio",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder --win --x64",
+    "build:dir": "electron-builder --win --x64 --dir"
+  },
+  "build": {
+    "appId": "com.astra.desktop",
+    "productName": "Astra",
+    "directories": { "output": "dist" },
+    "win": {
+      "target": ["nsis"],
+      "icon": null,
+      "artifactName": "Astra-Setup-${version}.${ext}"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true
+    }
+  },
+  "devDependencies": {
+    "electron": "^34.0.0",
+    "electron-builder": "^25.0.0"
+  },
+  "dependencies": {
+    "systeminformation": "^5.25.0"
+  }
+}
